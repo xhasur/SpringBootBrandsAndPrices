@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.util.LinkedMultiValueMap;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -46,7 +47,8 @@ public class IntegrationTest {
         requestParams.add("productId", "35455");
         requestParams.add("brandId", "1");
         mockMvc.perform(get("/api/get-prices")
-                        .params(requestParams))
+                        .params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
@@ -66,7 +68,8 @@ public class IntegrationTest {
         requestParams.add("productId", "35455");
         requestParams.add("brandId", "1");
         mockMvc.perform(get("/api/get-prices")
-                        .params(requestParams))
+                        .params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
@@ -87,7 +90,8 @@ public class IntegrationTest {
         requestParams.add("productId", "35455");
         requestParams.add("brandId", "1");
         mockMvc.perform(get("/api/get-prices")
-                        .params(requestParams))
+                        .params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
@@ -108,7 +112,8 @@ public class IntegrationTest {
         requestParams.add("productId", "35455");
         requestParams.add("brandId", "1");
         mockMvc.perform(get("/api/get-prices")
-                        .params(requestParams))
+                        .params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
@@ -129,7 +134,8 @@ public class IntegrationTest {
         requestParams.add("productId", "35455");
         requestParams.add("brandId", "1");
         mockMvc.perform(get("/api/get-prices")
-                        .params(requestParams))
+                        .params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())

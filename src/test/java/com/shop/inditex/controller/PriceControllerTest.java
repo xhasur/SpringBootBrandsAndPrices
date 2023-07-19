@@ -21,6 +21,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -63,6 +64,7 @@ public class PriceControllerTest {
                 35455,
                 1)).thenReturn(priceDto);
         mockMvc.perform(get("/api/get-prices")
+                        .with(user("admin").password("admin123"))
                         .params(requestParams))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").exists())
@@ -78,7 +80,8 @@ public class PriceControllerTest {
                 LocalDateTime.of(2020, 10, 12, 7, 30, 10, 000000),
                 35455,
                 1)).thenReturn(priceDto);
-        mockMvc.perform(get("/api/get-prices"))
+        mockMvc.perform(get("/api/get-prices")
+                        .with(user("admin").password("admin123")))
                 .andExpect(status().isBadRequest());
 
     }
@@ -89,7 +92,8 @@ public class PriceControllerTest {
         Mockito.when(priceService.getCorrectPrice(null, null, null)).thenThrow(NullPointerException.class);
         try {
             mockMvc.perform(get("/api/get-prices").
-                            params(requestParams))
+                            params(requestParams)
+                            .with(user("admin").password("admin123")))
                     .andExpect(status().isOk());
         } catch (Exception ex) {
             Assertions.assertThat(ex.getCause() instanceof NullPointerException).isTrue();
@@ -109,7 +113,8 @@ public class PriceControllerTest {
                 35455,
                 1)).thenReturn(priceDto);
         mockMvc.perform(get("/api/getPrices").
-                        params(requestParams))
+                        params(requestParams)
+                        .with(user("admin").password("admin123")))
                 .andExpect(status().isNotFound());
     }
 
