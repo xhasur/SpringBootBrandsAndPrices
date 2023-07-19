@@ -3,15 +3,18 @@ the following is the link to the api documentation, generated with open API
 
 http://localhost:8080/inditex/swagger-ui/index.html
 
+
 ### Successful Request
 
 ```console
 curl --request GET \
---url http://localhost:8080/inditex/api/get-prices \
---header 'Content-Type: multipart/form-data' \
---form applicationDate=2028-10-12T07:30:10Z \
---form productId=35455 \
---form brandId=1
+  --url http://localhost:8080/inditex/api/get-prices \
+  --header 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' \
+  --header 'Content-Type: multipart/form-data' \
+  --cookie JSESSIONID=A34202711F0DC5D4F01A23C33BA15267 \
+  --form applicationDate=2020-10-12T07:30:10Z \
+  --form productId=35455 \
+  --form brandId=1
 ```
 
 ### Response
@@ -32,11 +35,13 @@ curl --request GET \
 
 ```console
 curl --request GET \
---url http://localhost:8080/inditex/api/get-prices \
---header 'Content-Type: multipart/form-data' \
---form applicationDate=2028-10-12T07:30:10Z \
---form productId=35455 \
---form brandId=1
+  --url http://localhost:8080/inditex/api/get-prices \
+  --header 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' \
+  --header 'Content-Type: multipart/form-data' \
+  --cookie JSESSIONID=A34202711F0DC5D4F01A23C33BA15267 \
+  --form applicationDate=2029-10-12T07:30:10Z \
+  --form productId=35455 \
+  --form brandId=1
 ```
 
 ### Response
@@ -69,3 +74,13 @@ curl --request GET \
 - PRIORITY: Desambiguador de aplicación de precios. Si dos tarifas coinciden en un rago de fechas se aplica la de mayor prioridad (mayor valor numérico).
 - PRICE: precio final de venta.
 - CURR: iso de la moneda.
+
+
+
+
+
+
+Se ha agregado un plus a la implementacion la cual es agregarle  **_Spring Security_** con una configuracion de usuarios en base de datos
+Actualmente se esta enviando el valor de ADMIN y ADMIN123 en el password
+
+![Screenshot 2023-07-19 at 11.33.40 PM.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Flb%2Fb6ztxnzd3037lr7rxk8719g00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_IBRHqM%2FScreenshot%202023-07-19%20at%2011.33.40%20PM.png)
