@@ -83,4 +83,7 @@ curl --request GET \
 Se ha agregado un plus a la implementacion la cual es agregarle  **_Spring Security_** con una configuracion de usuarios en base de datos
 Actualmente se esta enviando el valor de ADMIN y ADMIN123 en el password
 
-![Screenshot 2023-07-19 at 11.33.40 PM.png](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Flb%2Fb6ztxnzd3037lr7rxk8719g00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_IBRHqM%2FScreenshot%202023-07-19%20at%2011.33.40%20PM.png)
+
+<img width="809" alt="Screenshot 2023-07-19 at 11 39 50 PM" src="https://github.com/xhasur/SpringBootBrandsAndPrices/assets/12173428/ee7a4366-5fcb-4771-a6a0-023127e7704a">
+
+ 
