@@ -8,10 +8,11 @@ http://localhost:8080/inditex/swagger-ui/index.html
 
 ```console
 curl --request GET \
+curl --request GET \
   --url http://localhost:8080/inditex/api/get-prices \
-  --header 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwaSIsImlhdCI6MTY4OTk1OTk1MiwiZXhwIjoxNjg5OTY3MTUyfQ.ysMu0j305wQWCFrs8yPoTOSBI0Sic1zhC-KkPlB3B9k' \
   --header 'Content-Type: multipart/form-data' \
-  --cookie JSESSIONID=A34202711F0DC5D4F01A23C33BA15267 \
+  --cookie JSESSIONID=E840FF384BD57F00C5DAEA54BBEA608C \
   --form applicationDate=2020-10-12T07:30:10Z \
   --form productId=35455 \
   --form brandId=1
@@ -36,9 +37,9 @@ curl --request GET \
 ```console
 curl --request GET \
   --url http://localhost:8080/inditex/api/get-prices \
-  --header 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwaSIsImlhdCI6MTY4OTk1OTk1MiwiZXhwIjoxNjg5OTY3MTUyfQ.ysMu0j305wQWCFrs8yPoTOSBI0Sic1zhC-KkPlB3B9k' \
   --header 'Content-Type: multipart/form-data' \
-  --cookie JSESSIONID=A34202711F0DC5D4F01A23C33BA15267 \
+  --cookie JSESSIONID=1FA01D65F9193C4AE44B979E3206F392 \
   --form applicationDate=2029-10-12T07:30:10Z \
   --form productId=35455 \
   --form brandId=1
@@ -80,10 +81,23 @@ curl --request GET \
 
 
 
-Se ha agregado un plus a la implementacion la cual es agregarle  **_Spring Security_** con una configuracion de usuarios en base de datos
-Actualmente se esta enviando el valor de ADMIN y ADMIN123 en el password
+A plus has been added to this implementation which is to add **_Spring Security_** with **_JWT_**
 
+For this, the controller called **_AuthController_** has been added, which contains the Endpoint in charge of logging into the application and restarting
+a valid JWT TOKEN and its response will be 200 if it is valid
 
-<img width="809" alt="Screenshot 2023-07-19 at 11 39 50 PM" src="https://github.com/xhasur/SpringBootBrandsAndPrices/assets/12173428/ee7a4366-5fcb-4771-a6a0-023127e7704a">
+```console
+
+curl --request POST \
+  --url http://localhost:8080/inditex/api/auth/login \
+  --header 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' \
+  --header 'Content-Type: application/json' \
+  --cookie JSESSIONID=1FA01D65F9193C4AE44B979E3206F392 \
+  --data '{
+	"username": "admin",
+	"password": "admin123"
+}'
+
+```
 
  
