@@ -22,7 +22,10 @@ public class UserSecurityService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = this.userRepository.findById(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found."));
+                .orElseThrow(() -> {
+                    System.out.println("aca");
+                    return new UsernameNotFoundException("User " + username + " not found.");
+                });
 
         return User.builder()
                 .username(userEntity.getUsername())
